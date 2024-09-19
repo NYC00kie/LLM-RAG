@@ -22,7 +22,7 @@ class RAGApplication:
 
 
 # List of URLs to load documents from
-docs_directory = "C:\\Users\\ScheelNi\\Desktop\\Programming\\RAG-LLM\\Moodle_doc_404_en"
+docs_directory = "Moodle_doc_404_en"
 
 htmlfiles = [os.path.join(root, name)
              for root, dirs, files in os.walk(docs_directory)
