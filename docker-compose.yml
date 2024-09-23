@@ -1,10 +1,18 @@
 services:
   ollama:
     image: ollama/ollama
+    container_name: ollama
     ports: 
       - 11434:11434
     volumes:
       - ollama:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1 # alternatively, use `count: all` for all GPUs
+              capabilities: [gpu]
 
 volumes:
   ollama:

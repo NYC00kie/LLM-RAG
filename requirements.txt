@@ -3,3 +3,4 @@ langchain_community
 scikit-learn
 langchain-ollama
 langchain_huggingface
+tiktoken
