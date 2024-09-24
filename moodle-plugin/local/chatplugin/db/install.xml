@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/chatplugin/db" VERSION="2023092100" COMMENT="Schema for chat messages">
+    <TABLE NAME="chat_messages" COMMENT="Stores chat messages between users">
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" COMMENT="Primary key"/>
+        <FIELD NAME="useridfrom" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="ID of the sender"/>
+        <FIELD NAME="useridto" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="ID of the recipient"/>
+        <FIELD NAME="message" TYPE="text" NOTNULL="true" COMMENT="The chat message"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Time the message was created"/>
+        <KEYS>
+            <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        </KEYS>
+    </TABLE>
+</XMLDB>
