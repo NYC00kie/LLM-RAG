@@ -9,9 +9,9 @@
                 <FIELD NAME="message" TYPE="text" NOTNULL="true" COMMENT="The chat message"/>
                 <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Time the message was created"/>
             </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+            </KEYS>
         </TABLE>
     </TABLES>
-    <KEYS>
-         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-    </KEYS>
 </XMLDB>
