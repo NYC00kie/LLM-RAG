@@ -1,7 +1,14 @@
-<div id="chat-window" class="chat-window">
-    <div id="chat-messages" class="chat-messages"></div>
-    <div class="chat-input">
-        <input type="text" id="message-input" placeholder="Type your message..."/>
-        <button id="send-message">Send</button>
-    </div>
+<div id="chat-window">
+    <div id="chat-messages"></div>
+
+    <!-- User selection dropdown -->
+    <select id="recipient-id">
+        {{#users}}
+            <option value="{{id}}">{{name}}</option>
+        {{/users}}
+    </select>
+
+    <!-- Message input and send button -->
+    <input type="text" id="message-input" placeholder="Type your message..." />
+    <button id="send-message">Send</button>
 </div>
