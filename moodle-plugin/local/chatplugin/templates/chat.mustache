@@ -5,9 +5,10 @@
     <select id="recipient-id">
         {{#users}}
             <option value="{{id}}">{{name}}</option>
+            <script> M.cfg.userid = {{current_user}} </script>
         {{/users}}
     </select>
-
+    <script>M.cfg.userid = {{current_user}}</script>
     <!-- Message input and send button -->
     <input type="text" id="message-input" placeholder="Type your message..." />
     <button id="send-message">Send</button>

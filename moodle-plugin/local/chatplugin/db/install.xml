@@ -4,10 +4,10 @@
         <TABLE NAME="local_chatplugin" COMMENT="Stores chat messages between users">
             <FIELDS>
                 <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" COMMENT="Primary key"/>
-                <FIELD NAME="useridfrom" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="ID of the sender"/>
-                <FIELD NAME="useridto" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="ID of the recipient"/>
-                <FIELD NAME="message" TYPE="text" NOTNULL="true" COMMENT="The chat message"/>
-                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Time the message was created"/>
+                <FIELD NAME="useridfrom" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID of the sender"/>
+                <FIELD NAME="useridto" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID of the recipient"/>
+                <FIELD NAME="message" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="The chat message"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Time the message was created"/>
             </FIELDS>
             <KEYS>
                 <KEY NAME="primary" TYPE="primary" FIELDS="id"/>

@@ -1,14 +1,22 @@
 window.addEventListener('load', function () {
-  alert("It's loaded!")
-  $('#send-message').click(function() {
-    var message = $('#message-input').val();
-    var useridfrom = M.cfg.userid;  // Logged-in user ID
-    var useridto = $('#recipient-id').val();  // Recipient ID
+    alert("It's loaded!")
 
-    if (message.length > 0) {
-        sendMessage(useridfrom, useridto, message);
+    try {
+        $('#send-message').click(function() {
+            var message = $('#message-input').val();
+            var useridfrom = M.cfg.userid;  // Logged-in user ID
+            var useridto = $('#recipient-id').val();  // Recipient ID
+
+            if (message.length > 0) {
+                sendMessage(useridfrom, useridto, message);
+            }
+        });
     }
-});
+    catch(err) {
+        alert(err.message)
+        location.reload()
+    }
+
 })
 
 
