@@ -1,29 +1,92 @@
-.chat-window {
+#chat-container {
     width: 300px;
     height: 400px;
-    border: 1px solid #ddd;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    background-color: #fff;
-}
-
-.chat-messages {
-    height: 350px;
-    overflow-y: scroll;
-    padding: 10px;
-}
-
-.chat-input {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+#chat-header {
+    background-color: #007bff;
     padding: 10px;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+}
+
+#chat-messages {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+#chat-messages div {
+    margin-bottom: 10px;
+}
+
+#chat-messages .message {
+    padding: 8px;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+#chat-messages .message.you {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+    text-align: right;
+}
+
+#chat-messages .message.other {
+    background-color: #e0e0e0;
+    color: black;
+    align-self: flex-start;
+}
+
+#chat-input-container {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    background-color: #f9f9f9;
 }
 
 #message-input {
-    width: 80%;
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    font-size: 14px;
 }
 
 #send-message {
-    width: 18%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+#send-message:hover {
+    background-color: #0056b3;
+}
+
+#send-message:active {
+    background-color: #004080;
 }

@@ -3,8 +3,8 @@ require_once('../../config.php');
 require_login();
 
 $PAGE->set_url(new moodle_url('/local/chatplugin/index.php'));
-$PAGE->requires->js( new moodle_url($CFG->wwwroot . '/local/chatplugin/amd/src/chat.js'));
 $PAGE->requires->js( new moodle_url($CFG->wwwroot . '/local/chatplugin/amd/src/jquery.min.js'));
+$PAGE->requires->js( new moodle_url($CFG->wwwroot . '/local/chatplugin/amd/src/chat.js'));
 $PAGE->set_context(context_system::instance());
 $PAGE->set_title('Chat Plugin');
 $PAGE->set_heading('Global Chat');

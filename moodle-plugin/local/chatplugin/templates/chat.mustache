@@ -1,15 +1,114 @@
-<div id="chat-window">
-    <div id="chat-messages"></div>
-
-    <!-- User selection dropdown -->
+<script>M.cfg.userid = {{current_user}}</script>
+<div id="chat-container">
+    <div id="chat-header">
+        <h3>A simple Chat</h3>
+    </div>
     <select id="recipient-id">
         {{#users}}
             <option value="{{id}}">{{name}}</option>
             <script> M.cfg.userid = {{current_user}} </script>
         {{/users}}
     </select>
-    <script>M.cfg.userid = {{current_user}}</script>
-    <!-- Message input and send button -->
-    <input type="text" id="message-input" placeholder="Type your message..." />
-    <button id="send-message">Send</button>
+    <div id="chat-messages">
+        <!-- Messages will be dynamically inserted here -->
+    </div>
+    <div id="chat-input-container">
+        <input type="text" id="message-input" placeholder="Type a message..." />
+        <button id="send-message">Send</button>
+    </div>
 </div>
+
+<style>
+#chat-container {
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+#chat-header {
+    background-color: #007bff;
+    padding: 10px;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+}
+
+#chat-messages {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+#chat-messages div {
+    margin-bottom: 10px;
+}
+
+#chat-messages .message {
+    padding: 8px;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+#chat-messages .message.you {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+    text-align: right;
+}
+
+#chat-messages .message.other {
+    background-color: #e0e0e0;
+    color: black;
+    align-self: flex-start;
+}
+
+#chat-input-container {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+#message-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    font-size: 14px;
+}
+
+#send-message {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+#send-message:hover {
+    background-color: #0056b3;
+}
+
+#send-message:active {
+    background-color: #004080;
+}
+</style>

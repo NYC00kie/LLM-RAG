@@ -39,3 +39,32 @@ function sendMessage(useridfrom, useridto, message) {
         }
     });
 }
+
+function loadMessages() {
+    $.ajax({
+        url: M.cfg.wwwroot + '/local/chatplugin/load_messages.php',
+        method: 'GET',
+        data: {
+            useridfrom: M.cfg.userid,  // Current user ID
+            useridto: $('#recipient-id').val()  // Recipient ID
+        },
+        success: function(response) {
+            $('#chat-messages').html('');  // Clear the chat messages
+            response.forEach(function(message) {
+                var msgClass = (message.useridfrom == M.cfg.userid) ? 'you' : 'other';
+                var msgHtml = '<div class="message ' + msgClass + '"><b>' + (msgClass == 'you' ? 'You' : 'Other') + ':</b> ' + message.message + '</div>';
+                $('#chat-messages').append(msgHtml);
+            });
+            $('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);  // Scroll to the bottom
+        },
+        error: function() {
+            console.log('Error loading messages');
+        }
+    });
+}
+
+// Load messages initially
+loadMessages();
+
+// Set an interval to refresh the messages every 5 seconds
+setInterval(loadMessages, 5000);
