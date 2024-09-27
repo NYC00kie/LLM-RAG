@@ -3,12 +3,7 @@
     <div id="chat-header">
         <h3>A simple Chat</h3>
     </div>
-    <select id="recipient-id">
-        {{#users}}
-            <option value="{{id}}">{{name}}</option>
-            <script> M.cfg.userid = {{current_user}} </script>
-        {{/users}}
-    </select>
+
     <div id="chat-messages">
         <!-- Messages will be dynamically inserted here -->
     </div>

@@ -23,5 +23,28 @@ $record->timecreated = time();
 // Assuming you have created a table `local_chatplugin_messages` to store the messages.
 $DB->insert_record('local_chatplugin', $record);
 
-// Optionally, send a JSON response back to the frontend.
-echo json_encode(['status' => 'success', 'message' => $message]);
+$curl_handle=curl_init();
+curl_setopt($curl_handle,CURLOPT_URL,'https://api64.ipify.org/?format=txt');
+curl_setopt($curl_handle,CURLOPT_CONNECTTIMEOUT,2);
+curl_setopt($curl_handle,CURLOPT_RETURNTRANSFER,1);
+$buffer = curl_exec($curl_handle);
+curl_close($curl_handle);
+if (empty($buffer)){
+    http_response_code(503);
+    echo "Nothing returned from url.<p>";
+}
+else{
+    
+    $answer = array("useridfrom"=> -1, "useridto"=>$useridfrom, "message"=>$buffer);
+
+    $record = new stdClass();
+    $record->useridfrom = -1;
+    $record->useridto = $useridfrom;
+    $record->message = $buffer;
+    $record->timecreated = time();
+
+    $DB->insert_record('local_chatplugin', $record);
+
+    echo json_encode(["succes" => "succes", "message" => $message]);
+}
+

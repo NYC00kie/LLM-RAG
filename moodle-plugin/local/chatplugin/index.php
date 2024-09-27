@@ -25,6 +25,6 @@ foreach ($users as $user) {
 
 // Include the chat template and JavaScript.
 echo $OUTPUT->header();
-echo $OUTPUT->render_from_template('local_chatplugin/chat', ['users' => $users_array, 'current_user' => $USER->id]);
+echo $OUTPUT->render_from_template('local_chatplugin/chat', ['current_user' => $USER->id]);
 echo $OUTPUT->footer();
 ?>

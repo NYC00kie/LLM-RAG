@@ -1,11 +1,10 @@
 window.addEventListener('load', function () {
-    alert("It's loaded!")
 
     try {
         $('#send-message').click(function() {
             var message = $('#message-input').val();
             var useridfrom = M.cfg.userid;  // Logged-in user ID
-            var useridto = $('#recipient-id').val();  // Recipient ID
+            var useridto = "-1" ;  // Recipient ID
 
             if (message.length > 0) {
                 sendMessage(useridfrom, useridto, message);
@@ -31,7 +30,9 @@ function sendMessage(useridfrom, useridto, message) {
             message: message
         },
         success: function(response) {
-            $('#chat-messages').append('<div>' + message + '</div>');
+            var msgClass = (message.useridfrom == M.cfg.userid) ? 'you' : 'other';
+            var msgHtml = '<div class="message ' + msgClass + '"><b>' + (msgClass == 'you' ? 'You' : 'Other') + ':</b> ' + message.message + '</div>';
+            $('#chat-messages').append(msgHtml);
             $('#message-input').val('');  // Clear the input
         },
         error: function() {
@@ -46,7 +47,7 @@ function loadMessages() {
         method: 'GET',
         data: {
             useridfrom: M.cfg.userid,  // Current user ID
-            useridto: $('#recipient-id').val()  // Recipient ID
+            useridto: "-1"  // Recipient ID
         },
         success: function(response) {
             $('#chat-messages').html('');  // Clear the chat messages
